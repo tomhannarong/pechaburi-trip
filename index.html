@@ -1,0 +1,2345 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>สรุปค่าใช้จ่ายทริปเพชรบุรี — UX/UI Responsive</title>
+  <meta name="description" content="สรุปค่าใช้จ่ายทริปเพชรบุรีแบบ Responsive พร้อมรายการต้อมเลี้ยง รายละเอียดรายคน และตรวจสอบย้อนกลับ" />
+  <style>
+
+    :root {
+      --bg: #fbf3e6;
+      --bg2: #fffaf3;
+      --ink: #22170f;
+      --muted: #765f4c;
+      --soft: #9a8068;
+      --card: rgba(255,255,255,.84);
+      --card-solid: #fffaf3;
+      --line: rgba(81, 54, 31, .14);
+      --line-strong: rgba(81, 54, 31, .22);
+      --orange: #d86b35;
+      --orange-dark: #9f4724;
+      --orange-soft: rgba(216,107,53,.14);
+      --green: #237a62;
+      --green-soft: rgba(35,122,98,.12);
+      --red: #b23b2d;
+      --red-soft: rgba(178,59,45,.10);
+      --gold: #f3b44b;
+      --gold-soft: rgba(243,180,75,.18);
+      --cream: #fff7ea;
+      --shadow: 0 24px 70px rgba(89, 49, 22, .15);
+      --shadow-hover: 0 30px 80px rgba(89, 49, 22, .22);
+      --shadow-soft: 0 12px 35px rgba(89, 49, 22, .10);
+      --radius: 30px;
+      --radius2: 20px;
+      --max: 1220px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family:
+        "Noto Sans Thai",
+        "Noto Sans",
+        "Tahoma",
+        "Leelawadee UI",
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        Arial,
+        sans-serif;
+      font-weight: 500;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 6% 8%, rgba(243,180,75,.36), transparent 27%),
+        radial-gradient(circle at 93% 6%, rgba(35,122,98,.22), transparent 30%),
+        radial-gradient(circle at 70% 70%, rgba(216,107,53,.12), transparent 35%),
+        linear-gradient(135deg, var(--bg), var(--bg2) 55%, #f1ddbf);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-variant-numeric: tabular-nums;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .23;
+      background-image:
+        linear-gradient(rgba(34,23,15,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,23,15,.055) 1px, transparent 1px);
+      background-size: 28px 28px;
+      z-index: -2;
+      mask-image: linear-gradient(to bottom, black, transparent 86%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      right: -160px;
+      bottom: -180px;
+      z-index: -1;
+      pointer-events: none;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(216,107,53,.20), transparent 64%);
+      filter: blur(4px);
+    }
+
+    ::selection {
+      color: white;
+      background: var(--orange);
+    }
+
+    a, button, .transfer, .person-card, .metric, .gift-box, .audit, .rule, .card, .nav a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    .hero {
+      padding: 26px 0 16px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,248,238,.80)),
+        url("data:image/svg+xml,%3Csvg width='650' height='650' viewBox='0 0 650 650' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='.15' stroke='%23A86835' stroke-width='2.4'%3E%3Cpath d='M75 178c64-47 154-29 205 32 47 56 134 58 189 9 31-27 69-38 108-26'/%3E%3Cpath d='M105 488c55-40 128-40 185 0 53 37 119 37 172 0 29-21 62-33 98-34'/%3E%3Ccircle cx='505' cy='126' r='36'/%3E%3Cpath d='M153 119l23 33 40-63'/%3E%3Cpath d='M374 333c15-36 56-55 94-42 40 14 62 58 49 98-15 46-68 70-113 49-40-18-59-66-40-105z'/%3E%3C/g%3E%3C/svg%3E");
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 5vw, 58px);
+      transform: translateZ(0);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -80px -80px auto auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(243,180,75,.42), transparent 64%);
+      pointer-events: none;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -120px -100px;
+      width: 320px;
+      height: 320px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(35,122,98,.16), transparent 64%);
+      pointer-events: none;
+    }
+
+    .hero-row {
+      display: flex;
+      gap: 24px;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: #8d4925;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(216,107,53,.22);
+      font-weight: 850;
+      font-size: 13px;
+      box-shadow: 0 8px 22px rgba(89,49,22,.07);
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+    }
+
+    .badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(89,49,22,.11);
+      border-color: rgba(216,107,53,.36);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 99px;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(35,122,98,.12);
+      animation: pulseDot 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { box-shadow: 0 0 0 5px rgba(35,122,98,.12); }
+      50% { box-shadow: 0 0 0 8px rgba(35,122,98,.06); }
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(38px, 7vw, 88px);
+      line-height: 1.03;
+      letter-spacing: -1.1px;
+      max-width: 900px;
+      text-wrap: balance;
+    }
+
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 2vw, 19px);
+      line-height: 1.8;
+      max-width: 840px;
+      text-wrap: pretty;
+    }
+
+    .stamp {
+      min-width: 218px;
+      rotate: 4deg;
+      text-align: center;
+      border: 2px dashed rgba(216,107,53,.52);
+      border-radius: 24px;
+      padding: 16px 18px;
+      background: rgba(255,255,255,.74);
+      box-shadow: 0 16px 34px rgba(216,107,53,.13);
+      transition: transform .35s var(--ease), rotate .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease);
+      transform-origin: center;
+    }
+
+    .stamp:hover {
+      rotate: 0deg;
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: 0 22px 46px rgba(216,107,53,.20);
+      background: rgba(255,255,255,.90);
+    }
+
+    .stamp span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .stamp b {
+      display: block;
+      color: var(--orange);
+      font-size: 32px;
+      margin: 3px 0;
+      letter-spacing: -.3px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.68);
+      padding: 18px;
+      min-height: 116px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
+    }
+
+    .metric::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 110px;
+      height: 110px;
+      border-radius: 999px;
+      background: rgba(216,107,53,.08);
+      transition: transform .28s var(--ease), opacity .28s var(--ease);
+    }
+
+    .metric:hover {
+      transform: translateY(-5px);
+      border-color: rgba(216,107,53,.30);
+      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,.86);
+    }
+
+    .metric:hover::after {
+      transform: scale(1.35);
+      opacity: .85;
+    }
+
+    .metric small {
+      color: var(--muted);
+      display: block;
+      font-weight: 850;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: clamp(25px, 3vw, 35px);
+      letter-spacing: -.35px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .metric em {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      font-style: normal;
+      line-height: 1.55;
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251,243,230,.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(81,54,31,.10);
+    }
+
+    .nav-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin-inline: auto;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 12px 0;
+    }
+
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    .nav a {
+      flex: 0 0 auto;
+      text-decoration: none;
+      color: var(--muted);
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 850;
+      transition: transform .22s var(--ease), background .22s var(--ease), color .22s var(--ease), border-color .22s var(--ease), box-shadow .22s var(--ease);
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--ink);
+      background: rgba(255,255,255,.96);
+      border-color: rgba(216,107,53,.34);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(89,49,22,.10);
+    }
+
+    section {
+      padding: 22px 0;
+      scroll-margin-top: 78px;
+    }
+
+    .section-title {
+      display: flex;
+      gap: 16px;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 44px);
+      letter-spacing: -.35px;
+      line-height: 1.18;
+      text-wrap: balance;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin: 6px 0 0;
+      line-height: 1.72;
+      text-wrap: pretty;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      backdrop-filter: blur(15px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
+    }
+
+    .card:hover {
+      border-color: rgba(81,54,31,.20);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .pad {
+      padding: clamp(18px, 3vw, 30px);
+    }
+
+    .transfer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    .transfer {
+      position: relative;
+      border: 1px solid rgba(81,54,31,.13);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,248,238,.74));
+      padding: 18px;
+      min-height: 184px;
+      overflow: hidden;
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
+    }
+
+    .transfer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(243,180,75,.18), transparent 32%),
+        radial-gradient(circle at 95% 105%, rgba(35,122,98,.12), transparent 42%);
+      opacity: 0;
+      transition: opacity .28s var(--ease);
+    }
+
+    .transfer:hover {
+      transform: translateY(-6px) scale(1.01);
+      border-color: rgba(216,107,53,.36);
+      box-shadow: 0 18px 44px rgba(89,49,22,.16);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,248,238,.86));
+    }
+
+    .transfer:hover::before {
+      opacity: 1;
+    }
+
+    .transfer .from, .transfer .to {
+      position: relative;
+      z-index: 2;
+      font-weight: 950;
+    }
+
+    .transfer .from {
+      font-size: 19px;
+    }
+
+    .transfer .to {
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    .transfer .arrow {
+      position: absolute;
+      right: 18px;
+      top: 10px;
+      font-size: 46px;
+      color: rgba(216,107,53,.18);
+      font-weight: 950;
+      transition: transform .28s var(--ease), color .28s var(--ease);
+    }
+
+    .transfer:hover .arrow {
+      transform: translateX(4px);
+      color: rgba(216,107,53,.32);
+    }
+
+    .transfer .money {
+      position: relative;
+      z-index: 2;
+      margin-top: 28px;
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 950;
+      letter-spacing: -.35px;
+    }
+
+    .copy-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      border-radius: 999px;
+      padding: 12px 17px;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(216,107,53,.22);
+      transition: transform .22s var(--ease), box-shadow .22s var(--ease), filter .22s var(--ease);
+      font-family: inherit;
+      min-height: 44px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(216,107,53,.28);
+      filter: saturate(1.05);
+    }
+
+    button:active {
+      transform: translateY(0) scale(.99);
+    }
+
+    button.secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    button.secondary:hover {
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 12px 28px rgba(89,49,22,.10);
+    }
+
+    .person-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .person-card {
+      border: 1px solid rgba(81,54,31,.13);
+      border-radius: 24px;
+      background: rgba(255,255,255,.68);
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
+    }
+
+    .person-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -50px -50px auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      background: rgba(216,107,53,.08);
+      transition: transform .28s var(--ease);
+    }
+
+    .person-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,.88);
+      box-shadow: var(--shadow-soft);
+      border-color: rgba(216,107,53,.24);
+    }
+
+    .person-card:hover::after {
+      transform: scale(1.25);
+    }
+
+    .person-card.positive {
+      box-shadow: inset 0 0 0 2px rgba(35,122,98,.10);
+    }
+
+    .person-card.negative {
+      box-shadow: inset 0 0 0 2px rgba(178,59,45,.09);
+    }
+
+    .person-head {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(216,107,53,.13);
+      color: var(--orange-dark);
+      font-weight: 950;
+      flex: 0 0 auto;
+      transition: transform .28s var(--ease), background .28s var(--ease);
+    }
+
+    .person-card:hover .avatar,
+    .transfer:hover + .avatar {
+      transform: rotate(-3deg) scale(1.04);
+      background: rgba(216,107,53,.20);
+    }
+
+    .person-head h3 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+      line-height: 1.25;
+    }
+
+    .person-head p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .mini-grid {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mini-grid div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed rgba(81,54,31,.14);
+    }
+
+    .mini-grid div:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .mini-grid span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .mini-grid b {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .result {
+      margin-top: 13px;
+      padding: 9px 10px;
+      border-radius: 999px;
+      background: rgba(35,122,98,.11);
+      color: var(--green);
+      font-weight: 900;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .negative .result {
+      background: rgba(178,59,45,.10);
+      color: var(--red);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.62);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid rgba(81,54,31,.10);
+      text-align: left;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+
+    th {
+      color: #7a4a28;
+      background: rgba(255,248,238,.96);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      position: sticky;
+      top: 0;
+      z-index: 3;
+    }
+
+    tbody tr {
+      transition: background .18s var(--ease), transform .18s var(--ease);
+    }
+
+    tbody tr:hover {
+      background: rgba(216,107,53,.07);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    tfoot td {
+      background: rgba(255,248,238,.96);
+      border-top: 1px solid var(--line);
+      font-weight: 850;
+    }
+
+    .num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .idx {
+      color: var(--muted);
+      font-weight: 900;
+      width: 42px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .small {
+      font-size: 12px;
+      line-height: 1.55;
+      margin-top: 3px;
+      white-space: normal;
+      max-width: 540px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(35,122,98,.11);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status.gift {
+      background: rgba(243,180,75,.20);
+      color: #8f5d14;
+    }
+
+    .note {
+      margin-top: 14px;
+      border-left: 5px solid var(--gold);
+      background: rgba(243,180,75,.14);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: #6e4a26;
+      line-height: 1.72;
+    }
+
+    .gift-banner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .gift-box {
+      border: 1px solid rgba(81,54,31,.13);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,247,232,.72));
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
+    }
+
+    .gift-box::after {
+      content: "♡";
+      position: absolute;
+      right: 16px;
+      top: 10px;
+      color: rgba(216,107,53,.18);
+      font-size: 34px;
+      font-weight: 950;
+      transition: transform .28s var(--ease), color .28s var(--ease);
+    }
+
+    .gift-box:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-soft);
+      border-color: rgba(216,107,53,.28);
+    }
+
+    .gift-box:hover::after {
+      transform: rotate(9deg) scale(1.1);
+      color: rgba(216,107,53,.28);
+    }
+
+    .gift-box small {
+      display: block;
+      color: var(--muted);
+      font-weight: 850;
+    }
+
+    .gift-box strong {
+      display: block;
+      font-size: 30px;
+      letter-spacing: -.3px;
+      margin-top: 5px;
+    }
+
+    .detail-block {
+      padding: 0;
+      margin-top: 18px;
+      scroll-margin-top: 90px;
+    }
+
+    .detail-block:first-child {
+      margin-top: 0;
+    }
+
+    .detail-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .detail-title h3 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 0;
+      line-height: 1.25;
+    }
+
+    .detail-title p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .netbox {
+      border-radius: 999px;
+      padding: 10px 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .netbox.pos {
+      color: var(--green);
+      background: rgba(35,122,98,.11);
+    }
+
+    .netbox.neg {
+      color: var(--red);
+      background: rgba(178,59,45,.10);
+    }
+
+    .audit-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .audit {
+      border: 1px solid rgba(81,54,31,.13);
+      border-radius: 22px;
+      background: rgba(255,255,255,.68);
+      padding: 16px;
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
+    }
+
+    .audit:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-soft);
+      border-color: rgba(35,122,98,.26);
+    }
+
+    .audit small {
+      color: var(--muted);
+      font-weight: 850;
+      display: block;
+    }
+
+    .audit strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+      letter-spacing: -.2px;
+    }
+
+    .ok {
+      color: var(--green);
+    }
+
+    code {
+      background: rgba(34,23,15,.08);
+      padding: 2px 6px;
+      border-radius: 7px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(80px);
+      opacity: 0;
+      pointer-events: none;
+      background: #22170f;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 999px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.24);
+      transition: .25s var(--ease);
+      z-index: 100;
+      font-weight: 900;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .fab-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(81,54,31,.14);
+      background: rgba(255,255,255,.86);
+      color: var(--orange-dark);
+      box-shadow: 0 14px 34px rgba(89,49,22,.16);
+      cursor: pointer;
+      z-index: 80;
+      opacity: 0;
+      transform: translateY(14px);
+      pointer-events: none;
+      transition: opacity .25s var(--ease), transform .25s var(--ease), background .25s var(--ease);
+      font-weight: 950;
+      backdrop-filter: blur(12px);
+    }
+
+    .fab-top.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .fab-top:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1050px) {
+      .metrics, .transfer-grid, .person-grid, .audit-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+      .gift-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .wrap, .nav-inner {
+        width: min(100% - 22px, var(--max));
+      }
+      .hero {
+        padding-top: 14px;
+      }
+      .hero-card {
+        border-radius: 26px;
+        padding: 20px;
+      }
+      .stamp {
+        width: 100%;
+        rotate: 0deg;
+      }
+      .metrics, .transfer-grid, .person-grid, .audit-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        letter-spacing: -.3px;
+      }
+      .section-title, .detail-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      th, td {
+        padding: 12px 11px;
+        font-size: 13px;
+      }
+      .transfer .money {
+        font-size: 34px;
+      }
+      .fab-top {
+        right: 12px;
+        bottom: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+      .nav, .copy-row, .footer, .fab-top {
+        display: none;
+      }
+      .card, .hero-card {
+        box-shadow: none;
+        background: white;
+      }
+      section {
+        break-inside: avoid;
+      }
+      .detail-block {
+        break-inside: avoid;
+      }
+      th {
+        position: static;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="hero-row">
+          <div>
+            <div class="badge"><span class="dot"></span> เวอร์ชัน UX/UI ใหม่ · ตรวจสอบยอดสมดุลแล้ว</div>
+            <h1>สรุปค่าใช้จ่าย<br>ทริปเพชรบุรี</h1>
+            <p class="sub">
+              เพิ่มรายการ <b>ต้อมเลี้ยง</b> แยกชัดเจน พร้อมรายละเอียดของแต่ละบัญชี:
+              ต้อม+นพ, ดรีม, ตาล, จ๋า, โรส+มิ้น ว่าใครจ่ายแทนอะไร และรับผิดชอบบิลไหนบ้าง
+            </p>
+          </div>
+          <div class="stamp">
+            <span>ยอดโอนรวมเข้า</span>
+            <b>8,456.57</b>
+            <span>ต้อม+นพ</span>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <div class="metric"><small>ค่าใช้จ่ายจริงรวม</small><strong>24,694.00</strong><em>รวมทุกบิล รวมค่าโค้ก 60 บาท</em></div>
+          <div class="metric"><small>ยอดจ่ายแทนรวม</small><strong>24,694.00</strong><em>ตรงกับยอดค่าใช้จ่ายจริง</em></div>
+          <div class="metric"><small>ยอดรับผิดชอบรวม</small><strong>24,694.00</strong><em>หลังแยกกติกา 7 หัว / 6 หัว / รายคน / ต้อมเลี้ยง</em></div>
+          <div class="metric"><small>รายการต้อมเลี้ยง</small><strong>1,078.00</strong><em>ไม่เก็บคืนจากคนอื่น</em></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#transfers">ยอดโอน</a>
+      <a href="#summary">สรุปบัญชี</a>
+      <a href="#treats">ต้อมเลี้ยง</a>
+      <a href="#people">รายละเอียดรายคน</a>
+      <a href="#expenses">รายการบิลทั้งหมด</a>
+      <a href="#audit">ตรวจสอบย้อนกลับ</a>
+      <a href="#host">อัปขึ้นโฮสต์ฟรี</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="transfers">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>ใครต้องโอนให้ใคร</h2>
+            <p>ทุกยอดโอนเข้า <b>ต้อม+นพ</b> ได้เลย ไม่ต้องให้ต้อมโอนต่อ</p>
+          </div>
+          <span class="status">ยอดโอนหลังปรับเศษ 0.01 แล้ว</span>
+        </div>
+        <div class="card pad">
+          <div class="transfer-grid">
+            
+        <article class="transfer">
+          <div class="from">ดรีม</div>
+          <div class="arrow">→</div>
+          <div class="to">ต้อม+นพ</div>
+          <div class="money">3,189.21</div>
+        </article>
+
+        <article class="transfer">
+          <div class="from">ตาล</div>
+          <div class="arrow">→</div>
+          <div class="to">ต้อม+นพ</div>
+          <div class="money">3,069.21</div>
+        </article>
+
+        <article class="transfer">
+          <div class="from">จ๋า</div>
+          <div class="arrow">→</div>
+          <div class="to">ต้อม+นพ</div>
+          <div class="money">2,021.71</div>
+        </article>
+
+        <article class="transfer">
+          <div class="from">โรส+มิ้น</div>
+          <div class="arrow">→</div>
+          <div class="to">ต้อม+นพ</div>
+          <div class="money">176.44</div>
+        </article>
+          </div>
+          <div class="note">
+            รวมโอนเข้า <b>ต้อม+นพ = 8,456.57 บาท</b> ตรงกับยอดที่ต้อม+นพต้องรับคืนพอดี
+            โดยยอดโรส+มิ้นปัดเป็น 176.44 บาท เพื่อให้ยอดโอนรวมตรงหลังปัดทศนิยม
+          </div>
+          <div class="copy-row">
+            <button onclick="copyTransfers()">คัดลอกยอดโอน</button>
+            <button class="secondary" onclick="window.print()">พิมพ์ / Save PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>สรุปบัญชีรวม</h2>
+            <p>สูตร: <b>จ่ายแทนจริง - ควรรับผิดชอบจริง = สุทธิ</b></p>
+          </div>
+        </div>
+        <div class="person-grid">
+          
+        <article class="person-card positive">
+          <div class="person-head">
+            <div class="avatar">ต</div>
+            <div>
+              <h3>ต้อม+นพ</h3>
+              <p>2 หัว · ร่วมรายการ 6 คน</p>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div><span>จ่ายแทน</span><b>16,832.00</b></div>
+            <div><span>รับผิดชอบ</span><b>8,375.43</b></div>
+            <div><span>สุทธิ</span><b>+8,456.57</b></div>
+          </div>
+          <div class="result">รับคืน</div>
+        </article>
+
+        <article class="person-card negative">
+          <div class="person-head">
+            <div class="avatar">ด</div>
+            <div>
+              <h3>ดรีม</h3>
+              <p>1 หัว · ร่วมรายการ 6 คน</p>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div><span>จ่ายแทน</span><b>415.00</b></div>
+            <div><span>รับผิดชอบ</span><b>3,604.21</b></div>
+            <div><span>สุทธิ</span><b>-3,189.21</b></div>
+          </div>
+          <div class="result">จ่ายเพิ่ม</div>
+        </article>
+
+        <article class="person-card negative">
+          <div class="person-head">
+            <div class="avatar">ต</div>
+            <div>
+              <h3>ตาล</h3>
+              <p>1 หัว · ร่วมรายการ 6 คน</p>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div><span>จ่ายแทน</span><b>505.00</b></div>
+            <div><span>รับผิดชอบ</span><b>3,574.21</b></div>
+            <div><span>สุทธิ</span><b>-3,069.21</b></div>
+          </div>
+          <div class="result">จ่ายเพิ่ม</div>
+        </article>
+
+        <article class="person-card negative">
+          <div class="person-head">
+            <div class="avatar">จ</div>
+            <div>
+              <h3>จ๋า</h3>
+              <p>1 หัว · ไม่ร่วมรายการ 6 คนที่ตัดจ๋า</p>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div><span>จ่ายแทน</span><b>0.00</b></div>
+            <div><span>รับผิดชอบ</span><b>2,021.71</b></div>
+            <div><span>สุทธิ</span><b>-2,021.71</b></div>
+          </div>
+          <div class="result">จ่ายเพิ่ม</div>
+        </article>
+
+        <article class="person-card negative">
+          <div class="person-head">
+            <div class="avatar">โ</div>
+            <div>
+              <h3>โรส+มิ้น</h3>
+              <p>2 หัว · ร่วมรายการ 6 คน</p>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div><span>จ่ายแทน</span><b>6,942.00</b></div>
+            <div><span>รับผิดชอบ</span><b>7,118.43</b></div>
+            <div><span>สุทธิ</span><b>-176.43</b></div>
+          </div>
+          <div class="result">จ่ายเพิ่ม</div>
+        </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="treats">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>รายการต้อมเลี้ยง</h2>
+            <p>รายการเหล่านี้บันทึกเป็นยอดจ่ายจริง แต่ไม่เอาไปหารเก็บคืนจากคนอื่น</p>
+          </div>
+        </div>
+        <div class="card pad">
+          <div class="gift-banner">
+            <div class="gift-box"><small>ยอดต้อมเลี้ยงรวม</small><strong>1,078.00</strong></div>
+            <div class="gift-box"><small>ต้อม+นพจ่ายจริงในกลุ่มนี้</small><strong>1,048.00</strong></div>
+            <div class="gift-box"><small>โรส+มิ้นจ่ายแทนในกลุ่มนี้</small><strong>30.00</strong></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>รายการ</th>
+                  <th>ใครจ่ายจริง</th>
+                  <th class="num">ยอดจ่ายจริง</th>
+                  <th class="num">ต้อม+นพรับผิดชอบ</th>
+                  <th class="num">คนอื่นรับผิดชอบ</th>
+                  <th>หมายเหตุ</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+        <tr>
+          <td class="idx">1</td>
+          <td><b>น้ำทิพย์ 1 แพ็ค</b><div class="muted small">ต้อม+นพ</div></td>
+          <td>ต้อม+นพ</td>
+          <td class="num">53.00</td>
+          <td class="num">53.00</td>
+          <td class="num">0.00</td>
+          <td>ต้อมเลี้ยง ไม่เก็บคืนจากคนอื่น</td>
+        </tr>
+
+        <tr>
+          <td class="idx">2</td>
+          <td><b>ข้าวบ้านกร่าง</b><div class="muted small">ต้อม+นพ</div></td>
+          <td>ต้อม+นพ</td>
+          <td class="num">645.00</td>
+          <td class="num">645.00</td>
+          <td class="num">0.00</td>
+          <td>ต้อมเลี้ยง ไม่เก็บคืนจากคนอื่น</td>
+        </tr>
+
+        <tr>
+          <td class="idx">3</td>
+          <td><b>ข้าวกล่อง</b><div class="muted small">ต้อม+นพ</div></td>
+          <td>ต้อม+นพ</td>
+          <td class="num">320.00</td>
+          <td class="num">320.00</td>
+          <td class="num">0.00</td>
+          <td>ต้อมเลี้ยง ไม่เก็บคืนจากคนอื่น</td>
+        </tr>
+
+        <tr>
+          <td class="idx">4</td>
+          <td><b>ค่าเข้าวัดถ้ำเขาหลวง - ต้อมจ่าย</b><div class="muted small">ต้อมจ่าย 30</div></td>
+          <td>ต้อม+นพ</td>
+          <td class="num">30.00</td>
+          <td class="num">30.00</td>
+          <td class="num">0.00</td>
+          <td>ต้อมเลี้ยงส่วนที่ต้อมจ่าย</td>
+        </tr>
+
+        <tr>
+          <td class="idx">5</td>
+          <td><b>ค่าเข้าวัดถ้ำเขาหลวง - โรสจ่ายแทน</b><div class="muted small">โรสจ่าย 30</div></td>
+          <td>โรส+มิ้น</td>
+          <td class="num">30.00</td>
+          <td class="num">30.00</td>
+          <td class="num">0.00</td>
+          <td>โรสจ่าย 30 แต่ต้อมเลี้ยง จึงให้ต้อม+นพรับผิดชอบ</td>
+        </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3"><b>รวมรายการต้อมเลี้ยง</b></td>
+                  <td class="num"><b>1,078.00</b></td>
+                  <td class="num"><b>1,078.00</b></td>
+                  <td class="num"><b>0.00</b></td>
+                  <td><b>ไม่เก็บคืนจากดรีม/ตาล/จ๋า/โรส+มิ้น</b></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="note">
+            ค่าเข้าวัด 60 บาทมีโรสจ่ายแทน 30 บาท แต่เพราะระบุว่า <b>ต้อมเลี้ยง จ่ายให้ที่โรสจ่ายด้วย</b>
+            จึงให้ต้อม+นพรับผิดชอบทั้ง 60 บาท และนำยอดที่โรสจ่าย 30 บาทไปหักกลบในยอดสุทธิรวมแล้ว
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="people">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>รายละเอียดของแต่ละคน</h2>
+            <p>แสดงทุกบิลที่เกี่ยวข้องกับแต่ละบัญชี ทั้งจ่ายแทนจริงและยอดที่ควรรับผิดชอบ</p>
+          </div>
+        </div>
+        <div class="card pad">
+          
+        <section class="detail-block" id="person-ต้อม+นพ">
+          <div class="detail-title">
+            <div>
+              <h3>ต้อม+นพ</h3>
+              <p>รับเงินโอนรวม 8,456.57 บาท</p>
+            </div>
+            <div class="netbox pos">รับคืน 8,456.57</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>รายการ</th>
+                  <th>ประเภท</th>
+                  <th class="num">จ่ายแทนจริง</th>
+                  <th class="num">รับผิดชอบจริง</th>
+                  <th>หมายเหตุ</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+            <tr>
+              <td><b>ค่ารถ</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">5,400.00</td>
+              <td class="num">1,542.86</td>
+              <td>จ่ายแทน 5,400.00 / รับผิดชอบ 1,542.86</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าน้ำมัน</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">2,200.00</td>
+              <td class="num">628.57</td>
+              <td>จ่ายแทน 2,200.00 / รับผิดชอบ 628.57</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าทัวร์พะเนินทุ่ง + เต็นท์</b><div class="muted small">คิดตามยอดรายคน; ยอดย่อยเดิมบวกได้ 5,913 แต่ยอดจ่ายจริงคือ 5,912 จึงปรับโรส+มิ้น 1,716 → 1,715</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">1,616.00</td>
+              <td>รับผิดชอบ 1,616.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวผัดไทย 100 ปี</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">390.00</td>
+              <td class="num">180.00</td>
+              <td>จ่ายแทน 390.00 / รับผิดชอบ 180.00</td>
+            </tr>
+
+            <tr>
+              <td><b>น้ำทิพย์ 1 แพ็ค</b><div class="muted small">ต้อมเลี้ยง ไม่เก็บคืนจากคนอื่น</div></td>
+              <td>ต้อมเลี้ยง</td>
+              <td class="num">53.00</td>
+              <td class="num">53.00</td>
+              <td>จ่ายแทน 53.00 / รับผิดชอบ 53.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวบ้านกร่าง</b><div class="muted small">ต้อมเลี้ยง ไม่เก็บคืนจากคนอื่น</div></td>
+              <td>ต้อมเลี้ยง</td>
+              <td class="num">645.00</td>
+              <td class="num">645.00</td>
+              <td>จ่ายแทน 645.00 / รับผิดชอบ 645.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวกล่อง</b><div class="muted small">ต้อมเลี้ยง ไม่เก็บคืนจากคนอื่น</div></td>
+              <td>ต้อมเลี้ยง</td>
+              <td class="num">320.00</td>
+              <td class="num">320.00</td>
+              <td>จ่ายแทน 320.00 / รับผิดชอบ 320.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าว Kissa ริมน้ำ</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">1,244.00</td>
+              <td class="num">550.00</td>
+              <td>จ่ายแทน 1,244.00 / รับผิดชอบ 550.00</td>
+            </tr>
+
+            <tr>
+              <td><b>คาเฟ่นก Kenaray&#x27;s</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">125.00</td>
+              <td>รับผิดชอบ 125.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ล่องเรือเขื่อน + ขนมลิง</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">333.33</td>
+              <td>รับผิดชอบ 333.33</td>
+            </tr>
+
+            <tr>
+              <td><b>โรงแรมโกลเด้นบีช ชะอำ</b><div class="muted small">3 ห้อง ราคาเท่ากัน; 6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">3,800.00</td>
+              <td class="num">1,266.67</td>
+              <td>จ่ายแทน 3,800.00 / รับผิดชอบ 1,266.67</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวเย็นลูกไก่ชะอำ ริมหาด</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">1,310.00</td>
+              <td class="num">436.67</td>
+              <td>จ่ายแทน 1,310.00 / รับผิดชอบ 436.67</td>
+            </tr>
+
+            <tr>
+              <td><b>ของมึนเมา ชะอำ</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">118.33</td>
+              <td>รับผิดชอบ 118.33</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าโค้ก</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">20.00</td>
+              <td>รับผิดชอบ 20.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวเปลญวน</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">1,440.00</td>
+              <td class="num">480.00</td>
+              <td>จ่ายแทน 1,440.00 / รับผิดชอบ 480.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าเข้าวัดถ้ำเขาหลวง - ต้อมจ่าย</b><div class="muted small">ต้อมเลี้ยงส่วนที่ต้อมจ่าย</div></td>
+              <td>ต้อมเลี้ยง</td>
+              <td class="num">30.00</td>
+              <td class="num">30.00</td>
+              <td>จ่ายแทน 30.00 / รับผิดชอบ 30.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าเข้าวัดถ้ำเขาหลวง - โรสจ่ายแทน</b><div class="muted small">โรสจ่าย 30 แต่ต้อมเลี้ยง จึงให้ต้อม+นพรับผิดชอบ</div></td>
+              <td>ต้อมเลี้ยง</td>
+              <td class="num">0.00</td>
+              <td class="num">30.00</td>
+              <td>รับผิดชอบ 30.00</td>
+            </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2"><b>รวม ต้อม+นพ</b></td>
+                  <td class="num"><b>16,832.00</b></td>
+                  <td class="num"><b>8,375.43</b></td>
+                  <td><b>สุทธิ +8,456.57</b></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+
+        <section class="detail-block" id="person-ดรีม">
+          <div class="detail-title">
+            <div>
+              <h3>ดรีม</h3>
+              <p>โอนให้ต้อม+นพ 3,189.21 บาท</p>
+            </div>
+            <div class="netbox neg">จ่ายเพิ่ม 3,189.21</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>รายการ</th>
+                  <th>ประเภท</th>
+                  <th class="num">จ่ายแทนจริง</th>
+                  <th class="num">รับผิดชอบจริง</th>
+                  <th>หมายเหตุ</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+            <tr>
+              <td><b>ค่ารถ</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">0.00</td>
+              <td class="num">771.43</td>
+              <td>รับผิดชอบ 771.43</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าน้ำมัน</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">0.00</td>
+              <td class="num">314.29</td>
+              <td>รับผิดชอบ 314.29</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าทัวร์พะเนินทุ่ง + เต็นท์</b><div class="muted small">คิดตามยอดรายคน; ยอดย่อยเดิมบวกได้ 5,913 แต่ยอดจ่ายจริงคือ 5,912 จึงปรับโรส+มิ้น 1,716 → 1,715</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">877.00</td>
+              <td>รับผิดชอบ 877.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวผัดไทย 100 ปี</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">70.00</td>
+              <td>รับผิดชอบ 70.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าว Kissa ริมน้ำ</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">159.00</td>
+              <td>รับผิดชอบ 159.00</td>
+            </tr>
+
+            <tr>
+              <td><b>คาเฟ่นก Kenaray&#x27;s</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">85.00</td>
+              <td>รับผิดชอบ 85.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ล่องเรือเขื่อน + ขนมลิง</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">166.67</td>
+              <td>รับผิดชอบ 166.67</td>
+            </tr>
+
+            <tr>
+              <td><b>โรงแรมโกลเด้นบีช ชะอำ</b><div class="muted small">3 ห้อง ราคาเท่ากัน; 6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">633.33</td>
+              <td>รับผิดชอบ 633.33</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวเย็นลูกไก่ชะอำ ริมหาด</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">218.33</td>
+              <td>รับผิดชอบ 218.33</td>
+            </tr>
+
+            <tr>
+              <td><b>ของมึนเมา ชะอำ</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">355.00</td>
+              <td class="num">59.17</td>
+              <td>จ่ายแทน 355.00 / รับผิดชอบ 59.17</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าโค้ก</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">60.00</td>
+              <td class="num">10.00</td>
+              <td>จ่ายแทน 60.00 / รับผิดชอบ 10.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวเปลญวน</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">240.00</td>
+              <td>รับผิดชอบ 240.00</td>
+            </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2"><b>รวม ดรีม</b></td>
+                  <td class="num"><b>415.00</b></td>
+                  <td class="num"><b>3,604.21</b></td>
+                  <td><b>สุทธิ -3,189.21</b></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+
+        <section class="detail-block" id="person-ตาล">
+          <div class="detail-title">
+            <div>
+              <h3>ตาล</h3>
+              <p>โอนให้ต้อม+นพ 3,069.21 บาท</p>
+            </div>
+            <div class="netbox neg">จ่ายเพิ่ม 3,069.21</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>รายการ</th>
+                  <th>ประเภท</th>
+                  <th class="num">จ่ายแทนจริง</th>
+                  <th class="num">รับผิดชอบจริง</th>
+                  <th>หมายเหตุ</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+            <tr>
+              <td><b>ค่ารถ</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">0.00</td>
+              <td class="num">771.43</td>
+              <td>รับผิดชอบ 771.43</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าน้ำมัน</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">0.00</td>
+              <td class="num">314.29</td>
+              <td>รับผิดชอบ 314.29</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าทัวร์พะเนินทุ่ง + เต็นท์</b><div class="muted small">คิดตามยอดรายคน; ยอดย่อยเดิมบวกได้ 5,913 แต่ยอดจ่ายจริงคือ 5,912 จึงปรับโรส+มิ้น 1,716 → 1,715</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">877.00</td>
+              <td>รับผิดชอบ 877.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวผัดไทย 100 ปี</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">70.00</td>
+              <td>รับผิดชอบ 70.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าว Kissa ริมน้ำ</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">119.00</td>
+              <td>รับผิดชอบ 119.00</td>
+            </tr>
+
+            <tr>
+              <td><b>คาเฟ่นก Kenaray&#x27;s</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">505.00</td>
+              <td class="num">95.00</td>
+              <td>จ่ายแทน 505.00 / รับผิดชอบ 95.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ล่องเรือเขื่อน + ขนมลิง</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">166.67</td>
+              <td>รับผิดชอบ 166.67</td>
+            </tr>
+
+            <tr>
+              <td><b>โรงแรมโกลเด้นบีช ชะอำ</b><div class="muted small">3 ห้อง ราคาเท่ากัน; 6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">633.33</td>
+              <td>รับผิดชอบ 633.33</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวเย็นลูกไก่ชะอำ ริมหาด</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">218.33</td>
+              <td>รับผิดชอบ 218.33</td>
+            </tr>
+
+            <tr>
+              <td><b>ของมึนเมา ชะอำ</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">59.17</td>
+              <td>รับผิดชอบ 59.17</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าโค้ก</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">10.00</td>
+              <td>รับผิดชอบ 10.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวเปลญวน</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">240.00</td>
+              <td>รับผิดชอบ 240.00</td>
+            </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2"><b>รวม ตาล</b></td>
+                  <td class="num"><b>505.00</b></td>
+                  <td class="num"><b>3,574.21</b></td>
+                  <td><b>สุทธิ -3,069.21</b></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+
+        <section class="detail-block" id="person-จ๋า">
+          <div class="detail-title">
+            <div>
+              <h3>จ๋า</h3>
+              <p>โอนให้ต้อม+นพ 2,021.71 บาท</p>
+            </div>
+            <div class="netbox neg">จ่ายเพิ่ม 2,021.71</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>รายการ</th>
+                  <th>ประเภท</th>
+                  <th class="num">จ่ายแทนจริง</th>
+                  <th class="num">รับผิดชอบจริง</th>
+                  <th>หมายเหตุ</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+            <tr>
+              <td><b>ค่ารถ</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">0.00</td>
+              <td class="num">771.43</td>
+              <td>รับผิดชอบ 771.43</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าน้ำมัน</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">0.00</td>
+              <td class="num">314.29</td>
+              <td>รับผิดชอบ 314.29</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าทัวร์พะเนินทุ่ง + เต็นท์</b><div class="muted small">คิดตามยอดรายคน; ยอดย่อยเดิมบวกได้ 5,913 แต่ยอดจ่ายจริงคือ 5,912 จึงปรับโรส+มิ้น 1,716 → 1,715</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">827.00</td>
+              <td>รับผิดชอบ 827.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าว Kissa ริมน้ำ</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">109.00</td>
+              <td>รับผิดชอบ 109.00</td>
+            </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2"><b>รวม จ๋า</b></td>
+                  <td class="num"><b>0.00</b></td>
+                  <td class="num"><b>2,021.71</b></td>
+                  <td><b>สุทธิ -2,021.71</b></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+
+        <section class="detail-block" id="person-โรส+มิ้น">
+          <div class="detail-title">
+            <div>
+              <h3>โรส+มิ้น</h3>
+              <p>โอนให้ต้อม+นพ 176.44 บาท</p>
+            </div>
+            <div class="netbox neg">จ่ายเพิ่ม 176.43</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>รายการ</th>
+                  <th>ประเภท</th>
+                  <th class="num">จ่ายแทนจริง</th>
+                  <th class="num">รับผิดชอบจริง</th>
+                  <th>หมายเหตุ</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+            <tr>
+              <td><b>ค่ารถ</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">0.00</td>
+              <td class="num">1,542.86</td>
+              <td>รับผิดชอบ 1,542.86</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าน้ำมัน</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+              <td>หารทุกคน</td>
+              <td class="num">0.00</td>
+              <td class="num">628.57</td>
+              <td>รับผิดชอบ 628.57</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าทัวร์พะเนินทุ่ง + เต็นท์</b><div class="muted small">คิดตามยอดรายคน; ยอดย่อยเดิมบวกได้ 5,913 แต่ยอดจ่ายจริงคือ 5,912 จึงปรับโรส+มิ้น 1,716 → 1,715</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">5,912.00</td>
+              <td class="num">1,715.00</td>
+              <td>จ่ายแทน 5,912.00 / รับผิดชอบ 1,715.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวผัดไทย 100 ปี</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">70.00</td>
+              <td>รับผิดชอบ 70.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าว Kissa ริมน้ำ</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">307.00</td>
+              <td>รับผิดชอบ 307.00</td>
+            </tr>
+
+            <tr>
+              <td><b>คาเฟ่นก Kenaray&#x27;s</b><div class="muted small">คิดตามยอดรายคน</div></td>
+              <td>ตามยอดรายคน</td>
+              <td class="num">0.00</td>
+              <td class="num">200.00</td>
+              <td>รับผิดชอบ 200.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ล่องเรือเขื่อน + ขนมลิง</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">1,000.00</td>
+              <td class="num">333.33</td>
+              <td>จ่ายแทน 1,000.00 / รับผิดชอบ 333.33</td>
+            </tr>
+
+            <tr>
+              <td><b>โรงแรมโกลเด้นบีช ชะอำ</b><div class="muted small">3 ห้อง ราคาเท่ากัน; 6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">1,266.67</td>
+              <td>รับผิดชอบ 1,266.67</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวเย็นลูกไก่ชะอำ ริมหาด</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">436.67</td>
+              <td>รับผิดชอบ 436.67</td>
+            </tr>
+
+            <tr>
+              <td><b>ของมึนเมา ชะอำ</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">118.33</td>
+              <td>รับผิดชอบ 118.33</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าโค้ก</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">20.00</td>
+              <td>รับผิดชอบ 20.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ข้าวเปลญวน</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+              <td>6 คนตัดจ๋า</td>
+              <td class="num">0.00</td>
+              <td class="num">480.00</td>
+              <td>รับผิดชอบ 480.00</td>
+            </tr>
+
+            <tr>
+              <td><b>ค่าเข้าวัดถ้ำเขาหลวง - โรสจ่ายแทน</b><div class="muted small">โรสจ่าย 30 แต่ต้อมเลี้ยง จึงให้ต้อม+นพรับผิดชอบ</div></td>
+              <td>ต้อมเลี้ยง</td>
+              <td class="num">30.00</td>
+              <td class="num">0.00</td>
+              <td>จ่ายแทน 30.00</td>
+            </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2"><b>รวม โรส+มิ้น</b></td>
+                  <td class="num"><b>6,942.00</b></td>
+                  <td class="num"><b>7,118.43</b></td>
+                  <td><b>สุทธิ -176.43</b></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="expenses">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>รายการบิลทั้งหมด</h2>
+            <p>ตรวจได้ว่าทุกบิลรวมเข้ายอดค่าใช้จ่ายจริงครบ</p>
+          </div>
+        </div>
+        <div class="card pad">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>รายการ</th>
+                  <th>ประเภท</th>
+                  <th>ใครจ่ายจริง</th>
+                  <th class="num">ยอดจ่ายจริง</th>
+                  <th class="num">ยอดรับผิดชอบรวม</th>
+                  <th>สถานะ</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+        <tr>
+          <td class="idx">1</td>
+          <td><b>ค่ารถ</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+          <td>หารทุกคน</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">5,400.00</td>
+          <td class="num">5,400.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">2</td>
+          <td><b>ค่าน้ำมัน</b><div class="muted small">หารทุกคน 7 หัว</div></td>
+          <td>หารทุกคน</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">2,200.00</td>
+          <td class="num">2,200.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">3</td>
+          <td><b>ค่าทัวร์พะเนินทุ่ง + เต็นท์</b><div class="muted small">คิดตามยอดรายคน; ยอดย่อยเดิมบวกได้ 5,913 แต่ยอดจ่ายจริงคือ 5,912 จึงปรับโรส+มิ้น 1,716 → 1,715</div></td>
+          <td>ตามยอดรายคน</td>
+          <td>โรส+มิ้น</td>
+          <td class="num">5,912.00</td>
+          <td class="num">5,912.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">4</td>
+          <td><b>ข้าวผัดไทย 100 ปี</b><div class="muted small">คิดตามยอดรายคน</div></td>
+          <td>ตามยอดรายคน</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">390.00</td>
+          <td class="num">390.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">5</td>
+          <td><b>น้ำทิพย์ 1 แพ็ค</b><div class="muted small">ต้อมเลี้ยง ไม่เก็บคืนจากคนอื่น</div></td>
+          <td>ต้อมเลี้ยง</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">53.00</td>
+          <td class="num">53.00</td>
+          <td><span class="status gift">ต้อมเลี้ยง</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">6</td>
+          <td><b>ข้าวบ้านกร่าง</b><div class="muted small">ต้อมเลี้ยง ไม่เก็บคืนจากคนอื่น</div></td>
+          <td>ต้อมเลี้ยง</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">645.00</td>
+          <td class="num">645.00</td>
+          <td><span class="status gift">ต้อมเลี้ยง</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">7</td>
+          <td><b>ข้าวกล่อง</b><div class="muted small">ต้อมเลี้ยง ไม่เก็บคืนจากคนอื่น</div></td>
+          <td>ต้อมเลี้ยง</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">320.00</td>
+          <td class="num">320.00</td>
+          <td><span class="status gift">ต้อมเลี้ยง</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">8</td>
+          <td><b>ข้าว Kissa ริมน้ำ</b><div class="muted small">คิดตามยอดรายคน</div></td>
+          <td>ตามยอดรายคน</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">1,244.00</td>
+          <td class="num">1,244.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">9</td>
+          <td><b>คาเฟ่นก Kenaray&#x27;s</b><div class="muted small">คิดตามยอดรายคน</div></td>
+          <td>ตามยอดรายคน</td>
+          <td>ตาล</td>
+          <td class="num">505.00</td>
+          <td class="num">505.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">10</td>
+          <td><b>ล่องเรือเขื่อน + ขนมลิง</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+          <td>6 คนตัดจ๋า</td>
+          <td>โรส+มิ้น</td>
+          <td class="num">1,000.00</td>
+          <td class="num">1,000.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">11</td>
+          <td><b>โรงแรมโกลเด้นบีช ชะอำ</b><div class="muted small">3 ห้อง ราคาเท่ากัน; 6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+          <td>6 คนตัดจ๋า</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">3,800.00</td>
+          <td class="num">3,800.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">12</td>
+          <td><b>ข้าวเย็นลูกไก่ชะอำ ริมหาด</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+          <td>6 คนตัดจ๋า</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">1,310.00</td>
+          <td class="num">1,310.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">13</td>
+          <td><b>ของมึนเมา ชะอำ</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+          <td>6 คนตัดจ๋า</td>
+          <td>ดรีม</td>
+          <td class="num">355.00</td>
+          <td class="num">355.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">14</td>
+          <td><b>ค่าโค้ก</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+          <td>6 คนตัดจ๋า</td>
+          <td>ดรีม</td>
+          <td class="num">60.00</td>
+          <td class="num">60.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">15</td>
+          <td><b>ข้าวเปลญวน</b><div class="muted small">6 คนหารเท่ากัน ตัดจ๋าออก</div></td>
+          <td>6 คนตัดจ๋า</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">1,440.00</td>
+          <td class="num">1,440.00</td>
+          <td><span class="status ">นำไปเคลียร์</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">16</td>
+          <td><b>ค่าเข้าวัดถ้ำเขาหลวง - ต้อมจ่าย</b><div class="muted small">ต้อมเลี้ยงส่วนที่ต้อมจ่าย</div></td>
+          <td>ต้อมเลี้ยง</td>
+          <td>ต้อม+นพ</td>
+          <td class="num">30.00</td>
+          <td class="num">30.00</td>
+          <td><span class="status gift">ต้อมเลี้ยง</span></td>
+        </tr>
+
+        <tr>
+          <td class="idx">17</td>
+          <td><b>ค่าเข้าวัดถ้ำเขาหลวง - โรสจ่ายแทน</b><div class="muted small">โรสจ่าย 30 แต่ต้อมเลี้ยง จึงให้ต้อม+นพรับผิดชอบ</div></td>
+          <td>ต้อมเลี้ยง</td>
+          <td>โรส+มิ้น</td>
+          <td class="num">30.00</td>
+          <td class="num">30.00</td>
+          <td><span class="status gift">ต้อมเลี้ยง</span></td>
+        </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note">
+            จุดตรวจสำคัญ: ค่าทัวร์จากตัวเลขเดิม <b>1,616 + 877 + 877 + 827 + 1,716 = 5,913</b>
+            แต่ยอดจ่ายจริงที่ระบุคือ <b>5,912</b> จึงยึดยอดจ่ายจริง 5,912 และปรับฝั่งโรส+มิ้นเป็น 1,715 เพื่อให้ยอดรวมถูกต้อง
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="audit">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>ตรวจสอบย้อนกลับ</h2>
+            <p>ยอดรวมต้องตรงกัน และผลรวมสุทธิทุกบัญชีต้องเป็นศูนย์</p>
+          </div>
+        </div>
+        <div class="card pad">
+          <div class="audit-grid">
+            <div class="audit"><small>ค่าใช้จ่ายจริง</small><strong>24,694.00</strong></div>
+            <div class="audit"><small>จ่ายแทนรวม</small><strong>24,694.00</strong></div>
+            <div class="audit"><small>รับผิดชอบรวม</small><strong>24,694.00</strong></div>
+            <div class="audit"><small>ผลรวมสุทธิ</small><strong>-0.00</strong></div>
+            <div class="audit"><small>สถานะ</small><strong class="ok">ผ่าน</strong></div>
+          </div>
+
+          <div class="table-wrap" style="margin-top:16px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>รายการตรวจ</th>
+                  <th class="num">ยอด</th>
+                  <th>คำอธิบาย</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>รวมเงินโอนเข้า ต้อม+นพ</td>
+                  <td class="num">8,456.57</td>
+                  <td>ดรีม 3,189.21 + ตาล 3,069.21 + จ๋า 2,021.71 + โรส+มิ้น 176.44</td>
+                </tr>
+                <tr>
+                  <td>ยอดที่ต้อม+นพต้องรับคืน</td>
+                  <td class="num">8,456.57</td>
+                  <td>จ่ายแทน 16,832.00 - รับผิดชอบจริง 8,375.43</td>
+                </tr>
+                <tr>
+                  <td>ผลต่างหลังเคลียร์</td>
+                  <td class="num">0.00</td>
+                  <td>ยอดโอนตรงกับยอดรับคืนหลังปัดสตางค์</td>
+                </tr>
+                <tr>
+                  <td>รายการต้อมเลี้ยงรวม</td>
+                  <td class="num">1,078.00</td>
+                  <td>น้ำทิพย์ 53 + ข้าวบ้านกร่าง 645 + ข้าวกล่อง 320 + ค่าเข้าวัด 60</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="host">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>อัปขึ้นโฮสต์ฟรี</h2>
+            <p>ไฟล์นี้เป็น HTML หน้าเดียว พร้อมใช้งานบนฟรีโฮสต์</p>
+          </div>
+        </div>
+        <div class="card pad">
+          <div class="note">
+            วิธีเร็วสุด: เปลี่ยนชื่อไฟล์เป็น <code>index.html</code> แล้วลากไปวางที่ Netlify Drop จะได้ลิงก์เว็บฟรีทันที
+            หรืออัปขึ้น GitHub Pages / Cloudflare Pages ก็ได้
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer">
+    สรุปค่าใช้จ่ายทริปเพชรบุรี · รายละเอียดรายคนครบ · รายการต้อมเลี้ยงแยกชัดเจน · ตรวจสอบยอดแล้ว
+  </div>
+
+  <button class="fab-top" id="fabTop" aria-label="กลับขึ้นด้านบน" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+  <div class="toast" id="toast">คัดลอกยอดโอนแล้ว</div>
+
+  <script>
+
+    const transferText = 'สรุปยอดโอนทริปเพชรบุรี
+
+ดรีม โอนให้ ต้อม+นพ: 3,189.21 บาท
+ตาล โอนให้ ต้อม+นพ: 3,069.21 บาท
+จ๋า โอนให้ ต้อม+นพ: 2,021.71 บาท
+โรส+มิ้น โอนให้ ต้อม+นพ: 176.44 บาท
+
+รวมโอนเข้า ต้อม+นพ: 8,456.57 บาท
+
+หมายเหตุ:
+- รายการต้อมเลี้ยงรวม 1,078.00 บาท
+- ค่าเข้าวัด 60 บาท ต้อมเลี้ยงทั้งหมด แม้โรสจ่ายแทน 30 บาท
+- ค่าทัวร์ยึดยอดจ่ายจริง 5,912 บาท และปรับโรส+มิ้นจาก 1,716 เป็น 1,715 บาทเพื่อให้ยอดรวมถูกต้อง';
+
+    function showToast(message = "คัดลอกยอดโอนแล้ว") {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    function copyTransfers() {
+      navigator.clipboard.writeText(transferText).then(() => {
+        showToast("คัดลอกยอดโอนแล้ว");
+      }).catch(() => {
+        alert(transferText);
+      });
+    }
+
+    const fabTop = document.getElementById("fabTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 480) {
+        fabTop.classList.add("show");
+      } else {
+        fabTop.classList.remove("show");
+      }
+    }, { passive: true });
+
+    const navLinks = [...document.querySelectorAll(".nav a")];
+    const sections = navLinks
+      .map(link => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (!visible) return;
+
+      navLinks.forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + visible.target.id);
+      });
+    }, {
+      rootMargin: "-20% 0px -68% 0px",
+      threshold: [0.08, 0.18, 0.32]
+    });
+
+    sections.forEach(section => observer.observe(section));
+
+    document.querySelectorAll(".table-wrap").forEach((wrap) => {
+      wrap.addEventListener("scroll", () => {
+        if (wrap.scrollLeft > 8) {
+          wrap.dataset.scrolled = "true";
+        } else {
+          wrap.dataset.scrolled = "false";
+        }
+      }, { passive: true });
+    });
+
+  </script>
+</body>
+</html>
